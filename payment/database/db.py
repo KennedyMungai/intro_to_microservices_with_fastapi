@@ -8,6 +8,7 @@ load_dotenv(find_dotenv())
 
 REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD')
 
+# This should be the connection logic for another database
 redis = get_redis_connection(
     host='redis-10746.c8.us-east-1-2.ec2.cloud.redislabs.com',
     port=10746,
