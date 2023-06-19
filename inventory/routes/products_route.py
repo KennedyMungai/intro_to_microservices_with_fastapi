@@ -1,6 +1,8 @@
 """The products routing logic"""
 from fastapi import APIRouter
 
+from models.db_models import Product
+
 
 products_router = APIRouter(
     prefix="/products",
@@ -19,4 +21,4 @@ async def get_all_products_endpoint():
     Returns:
         _type_: _description_
     """
-    return []
+    return Product.all_pks()
