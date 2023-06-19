@@ -59,3 +59,23 @@ def order_completed(_order: Order):
     """
     _order.status = 'completed'
     _order.save()
+
+
+
+@orders_router.get(
+    "/{_pk)}", 
+    name="Retrieve An Order",
+    description="The endpoint to retrieve a specific order"
+    )
+async def retrieve_one_order_endpoint(
+    _pk: str
+):
+    """The endpoint to retrieve a single order entry
+
+    Args:
+        _pk (str): A primary key for an entry
+
+    Returns:
+        Order: The order entry
+    """
+    return Order.get(_pk)
