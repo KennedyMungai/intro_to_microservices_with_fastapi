@@ -1,9 +1,7 @@
 """The products routing logic"""
 from fastapi import APIRouter, status
-from schemas.product_schema import ProductDisplay
-
 from models.db_models import Product
-
+from schemas.product_schema import ProductCreate, ProductDisplay
 
 products_router = APIRouter(
     prefix="/products",
@@ -44,7 +42,7 @@ def format_service(_pk: str) -> ProductDisplay:
     description="Creates a new product",
     status_code=status.HTTP_201_CREATED
 )
-async def create_product_endpoint(product: Product):
+async def create_product_endpoint(product: ProductCreate):
     """The endpoint to create a product
 
     Args:
