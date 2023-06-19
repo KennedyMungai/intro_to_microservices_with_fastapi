@@ -16,3 +16,14 @@ class ProductDisplay(BaseModel):
     class Config:
         """The config subclass for the ProductDisplay Schema"""
         orm_mode = True
+
+
+class ProductCreate(BaseModel):
+    """The schema used to create a product
+
+    Args:
+        BaseModel (Pydantic Model): The base model
+    """
+    name: str
+    price: float
+    quantity: int
