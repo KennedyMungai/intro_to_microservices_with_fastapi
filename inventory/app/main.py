@@ -1,5 +1,6 @@
 """The main script for the app"""
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routes.products_route import products_router
 
 app = FastAPI(
@@ -7,6 +8,13 @@ app = FastAPI(
     description="The microservice that deals with the inventory system"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @app.get(
     "/",
