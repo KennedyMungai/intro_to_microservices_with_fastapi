@@ -1,5 +1,6 @@
 """The products routing logic"""
 from fastapi import APIRouter, status
+from schemas.product_schema import ProductDisplay
 
 from models.db_models import Product
 
@@ -21,7 +22,20 @@ async def get_all_products_endpoint():
     Returns:
         _type_: _description_
     """
-    return Product.all_pks()
+    return [format_service(pk) for pk in Product.all_pks()]
+
+
+def format_service(_pk: str) -> ProductDisplay:
+    """A function to format the return of an item
+
+    Args:
+        pk (str): The Primary Key
+
+    Returns:
+        ProductDisplay: The schema
+    """
+    product = Product.get(_pk)
+    return product
 
 
 @products_router.post(
