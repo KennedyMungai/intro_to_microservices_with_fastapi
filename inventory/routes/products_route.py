@@ -54,3 +54,21 @@ async def create_product_endpoint(product: Product):
         _type_: _description_
     """
     return product.save()
+
+
+@products_router.get(
+    "/{_pk}",
+    name='Get Product',
+    description="Returns a product",
+    response_model=ProductDisplay
+)
+async def get_single_product_endpoint(_pk: str):
+    """The endpoint to get a single product
+
+    Args:
+        pk (str): The Primary Key
+
+    Returns:
+        _type_: _description_
+    """
+    return Product.get(_pk)
