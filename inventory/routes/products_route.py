@@ -90,4 +90,6 @@ async def delete_product_endpoint(_pk: str) -> None:
     Returns:
         _type_: _description_
     """
-    return Product.delete(_pk)
+    product = Product.get(_pk)
+    product.delete()
+    return None
