@@ -1,6 +1,7 @@
 """The main app for the microservice"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from routes.orders_route import orders_router
 
 app = FastAPI(
     title="Payment",
@@ -35,3 +36,5 @@ async def root():
         _type_: _description_
     """
     return {"message": "Payment Microservice"}
+
+app.include_router(orders_router)
