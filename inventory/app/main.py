@@ -1,6 +1,6 @@
 """The main script for the app"""
 from fastapi import FastAPI
-
+from routes.products_route import products_router
 
 app = FastAPI(
     title="Inventory Microservice",
@@ -22,3 +22,6 @@ async def root() -> dict[str, str]:
         dict[str, str]: A simple message
     """
     return {"Message": "The inventory microservice is running"}
+
+
+app.include_router(products_router)
