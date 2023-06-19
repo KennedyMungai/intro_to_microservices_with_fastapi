@@ -1,0 +1,18 @@
+"""The inventory models"""
+from redis_om import HashModel
+from app.main import redis
+
+
+class Product(HashModel):
+    """The model for the Product.
+
+    Args:
+        HashModel (_type_): The HashModel class from redis_om
+    """
+    name: str
+    price: float
+    quantity: int
+    
+    class Meta:
+        """The meta subclass for the redis inventory"""
+        database = redis
