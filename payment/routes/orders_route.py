@@ -52,3 +52,5 @@ def order_completed(_order: Order):
         _order (Order): The order
     """
     _order.status = 'completed'
+    _order.save()
+
