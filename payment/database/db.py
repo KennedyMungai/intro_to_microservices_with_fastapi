@@ -1,6 +1,7 @@
 """The database connection script"""
 import os
-from dotenv import load_dotenv, find_dotenv
+
+from dotenv import find_dotenv, load_dotenv
 from redis_om import get_redis_connection
 
 load_dotenv(find_dotenv())
