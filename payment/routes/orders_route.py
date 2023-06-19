@@ -1,4 +1,5 @@
 """The orders route file"""
+from datetime import time
 import requests
 from fastapi import APIRouter, Request, status
 from models.db_models import Order
@@ -51,6 +52,6 @@ def order_completed(_order: Order):
     Args:
         _order (Order): The order
     """
+    time.sleep(5)
     _order.status = 'completed'
     _order.save()
-
