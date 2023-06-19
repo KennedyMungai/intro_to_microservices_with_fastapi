@@ -27,4 +27,4 @@ async def create_order_endpoint(_request: Request):
     _body = await _request.json()
     _req = requests.get(f'http://localhost:8000/products/%s' % _body['id'], timeout=10000)
 
-    return _req
+    return _req.json()
