@@ -63,7 +63,7 @@ def order_completed(_order: Order):
 
 
 @orders_router.get(
-    "/{_pk)}", 
+    "/{_pk}", 
     name="Retrieve An Order",
     description="The endpoint to retrieve a specific order"
     )
