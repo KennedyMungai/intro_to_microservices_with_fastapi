@@ -1,6 +1,9 @@
 """The orders route file"""
+from math import ceil
+
 import requests
 from fastapi import APIRouter, Request, status
+from fastapi.background import BackgroundTasks
 from models.db_models import Order
 
 orders_router = APIRouter(
@@ -15,7 +18,10 @@ orders_router = APIRouter(
     description="The endpoint to make an order",
     status_code=status.HTTP_201_CREATED
 )
-async def create_order_endpoint(_request: Request):
+async def create_order_endpoint(
+    _request: Request,
+    _background_tasks: BackgroundTasks
+):
     """The endpoint to make an order
 
     Args:
@@ -32,8 +38,8 @@ async def create_order_endpoint(_request: Request):
     _order = Order(
         product_id=_body['id'],
         price=_product['price'],
-        fee=_product['price'] * 0.2,
-        total=_product['price'] * 1.2,
+        fee=ceil(_product['price'] * 0.2),
+        total=ceil(_product['price'] * 1.2),
         quantity=_body['quantity'],
         status='pending'
     )
