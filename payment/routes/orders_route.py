@@ -61,12 +61,11 @@ def order_completed(_order: Order):
     _order.save()
 
 
-
 @orders_router.get(
-    "/{_pk}", 
+    "/{_pk}",
     name="Retrieve An Order",
     description="The endpoint to retrieve a specific order"
-    )
+)
 async def retrieve_one_order_endpoint(
     _pk: str
 ):
