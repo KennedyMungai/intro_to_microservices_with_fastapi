@@ -72,3 +72,22 @@ async def get_single_product_endpoint(_pk: str):
         _type_: _description_
     """
     return Product.get(_pk)
+
+
+@products_router.delete(
+    "/{_pk}", 
+    name='Delete Product', 
+    description="An endpoint to delete a product", 
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_model=None
+    )
+async def delete_product_endpoint(_pk: str) -> None:
+    """An endpoint to delete a product
+
+    Args:
+        pk (str): The Primary Key
+
+    Returns:
+        _type_: _description_
+    """
+    return Product.delete(_pk)
