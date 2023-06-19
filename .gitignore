@@ -1,2 +1,5 @@
 inventory_venv/
 payment_venv/
+__pycache__/
+requirements.txt
+.env
