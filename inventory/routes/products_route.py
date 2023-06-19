@@ -1,7 +1,7 @@
 """The products routing logic"""
 from fastapi import APIRouter, status
 from models.db_models import Product
-from schemas.product_schema import ProductCreate, ProductDisplay
+from schemas.product_schema import ProductDisplay
 
 products_router = APIRouter(
     prefix="/products",
