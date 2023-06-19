@@ -1,7 +1,7 @@
 """The orders route file"""
 import requests
 from fastapi import APIRouter, Request, status
-
+from models.db_models import Order
 
 orders_router = APIRouter(
     prefix="/orders",
@@ -25,6 +25,18 @@ async def create_order_endpoint(_request: Request):
         _type_: Something
     """
     _body = await _request.json()
-    _req = requests.get(f'http://localhost:8000/products/%s' % _body['id'], timeout=10000)
+    _req = requests.get('http://localhost:8100/products/%s' % _body['id'], timeout=10000)
+    _product = _req.json()
+    
+    _order = Order(
+        product_id = _body['id'],
+        price = _product['price'],
+        fee = _product['price'] * 0.2,
+        total = _product['price'] * 1.2,
+        quantity = _body['quantity'],
+        status='pending'
+    )
+    
+    _order.save()
 
-    return _req.json()
+    return _order
