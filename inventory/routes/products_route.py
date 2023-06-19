@@ -42,7 +42,7 @@ def format_service(_pk: str) -> ProductDisplay:
     description="Creates a new product",
     status_code=status.HTTP_201_CREATED
 )
-async def create_product_endpoint(product: ProductCreate):
+async def create_product_endpoint(product: Product):
     """The endpoint to create a product
 
     Args:
