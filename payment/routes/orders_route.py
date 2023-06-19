@@ -45,7 +45,7 @@ async def create_order_endpoint(
     )
 
     _order.save()
-    
+
     _background_tasks(order_completed, _order)
 
     return _order
