@@ -13,4 +13,4 @@ class Order(HashModel):
     fee: float
     total: float
     quantity: int
-    status: str
+    status: str     # pending, completed, refunded
