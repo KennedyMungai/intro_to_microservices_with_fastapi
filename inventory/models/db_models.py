@@ -1,5 +1,5 @@
 """The inventory models"""
-from app.main import redis
+from database.db import redis
 from redis_om import HashModel
 
 
