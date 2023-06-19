@@ -3,3 +3,4 @@ payment_venv/
 __pycache__/
 requirements.txt
 .env
+node_modules/
