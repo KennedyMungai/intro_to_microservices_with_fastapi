@@ -27,6 +27,8 @@ while True:
                     print(product)
                     product.quantity -= int(obj['quantity'])
                     product.save()
+                else:
+                    redis.xadd('refund_order', obj, '*')
     except Exception as e:
         print(str(e))
 
