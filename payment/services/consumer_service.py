@@ -4,8 +4,8 @@ import time
 from database.db import redis
 from models.db_models import Product
 
-key = 'order_completed'
-group = 'inventory_group'
+key = 'refund_order'
+group = 'payment_group'
 
 
 try:
