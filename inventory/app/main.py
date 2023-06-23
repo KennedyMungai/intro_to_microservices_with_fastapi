@@ -1,7 +1,6 @@
 """The main script for the app"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes.consumers_route import consumers_route
 from routes.products_route import products_router
 
 app = FastAPI(
@@ -39,4 +38,3 @@ async def root() -> dict[str, str]:
 
 
 app.include_router(products_router)
-app.include_router(consumers_route)
