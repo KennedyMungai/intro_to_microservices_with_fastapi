@@ -60,7 +60,7 @@ def order_completed(_order: Order):
     """
     _order.status = 'completed'
     _order.save()
-    redis.xadd('order_completed', _order.dict())
+    redis.xadd('order_completed', _order.dict(), '*')
 
 
 @orders_router.get(
