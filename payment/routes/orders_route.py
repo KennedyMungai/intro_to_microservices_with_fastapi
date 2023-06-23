@@ -2,10 +2,10 @@
 from math import ceil
 
 import requests
+from database.db import redis
 from fastapi import APIRouter, Request, status
 from fastapi.background import BackgroundTasks
 from models.db_models import Order
-from database.db import redis
 
 orders_router = APIRouter(
     prefix="/orders",
@@ -60,7 +60,7 @@ def order_completed(_order: Order):
     """
     _order.status = 'completed'
     _order.save()
-    redis.xadd()
+    redis.xadd('order_completed')
 
 
 @orders_router.get(
