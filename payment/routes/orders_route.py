@@ -5,6 +5,7 @@ import requests
 from fastapi import APIRouter, Request, status
 from fastapi.background import BackgroundTasks
 from models.db_models import Order
+from database.db import redis
 
 orders_router = APIRouter(
     prefix="/orders",
@@ -59,6 +60,7 @@ def order_completed(_order: Order):
     """
     _order.status = 'completed'
     _order.save()
+    redis.xadd()
 
 
 @orders_router.get(
